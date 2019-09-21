@@ -1,4 +1,5 @@
 import { fetchProductSuccess } from './productActions';
+import WooCommerceAPI from './WooCommerce/WooCommerceAPI';
 
 export function fetchProducts() {
     return dispatch => {

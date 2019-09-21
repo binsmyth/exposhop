@@ -11,8 +11,6 @@ const productReducer = (state=INITIAL_STATE, action) => {
         var index = title.indexOf(action.payload);
         var addedProduct = title.splice(index, 1);
         cartItem.push(addedProduct);
-        console.log(cartItem);
-
         const newState = {title, cartItem};
         return newState;
         // cartItem.push(title[action.payload]);
@@ -27,6 +25,7 @@ const productReducer = (state=INITIAL_STATE, action) => {
     }
     else 
     if(action.type === 'FETCH_PRODUCT_SUCCESS'){
+        console.log(state);
         return {
             ...state,
             title: action.payload

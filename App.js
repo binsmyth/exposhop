@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import {createStore, applyMiddleware } from 'redux';
+import {createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';//thunk
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -16,12 +16,16 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, ProductReducer);
 
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
     persistedReducer, 
-    applyMiddleware(thunk)
+    composeEnhancer (applyMiddleware(thunk))
   );
 
-let persistor = persistStore(store);
+let persistor = persistStore(store, {manualPersist:true});
+persistor.purge();
+persistor.pause();
 
 export default class App extends Component {
   render() {
