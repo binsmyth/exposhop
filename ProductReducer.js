@@ -25,10 +25,9 @@ const productReducer = (state=INITIAL_STATE, action) => {
     }
     else 
     if(action.type === 'FETCH_PRODUCT_SUCCESS'){
-        console.log(state);
         return {
             ...state,
-            title: action.payload
+            product: action.payload
         }
     }
     return state;           

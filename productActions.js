@@ -9,10 +9,10 @@ export function addProduct(productIndex) {
     }
 }
 
-export function fetchProductSuccess(title){
+export function fetchProductSuccess(product){
     return{
         type:FETCH_PRODUCT_SUCCESS,
-        payload:title
+        payload:product
     }
 }
 

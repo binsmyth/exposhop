@@ -3,14 +3,14 @@
 import OAuth from "oauth-1.0a";
 import CryptoJS from 'crypto-js';
 
-module.exports = WooCommerceAPI;
+//module.exports = WooCommerceAPI;
 
 /**
  * WooCommerce REST API wrapper
  *
  * @param {Object} opt
  */
-function WooCommerceAPI(opt) {
+export default function WooCommerceAPI(opt) {
 	// console.log(opt);
 	if (!(this instanceof WooCommerceAPI)) {
 		return new WooCommerceAPI(opt);
@@ -126,9 +126,9 @@ WooCommerceAPI.prototype._getOAuth = function () {
 			key: this.consumerKey,
 			secret: this.consumerSecret
 		},
-		signature_method: 'HMAC-SHA256',
+		signature_method: 'HMAC-SHA1',
 		hash_function: function(base_string, key) {
-			return CryptoJS.HmacSHA256(base_string, key).toString(CryptoJS.enc.Base64);
+			return CryptoJS.HmacSHA1(base_string, key).toString(CryptoJS.enc.Base64);
 		}
 	};
 

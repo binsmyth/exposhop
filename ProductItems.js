@@ -14,8 +14,12 @@ class titleArrays extends Component {
         fetchProducts();
     }
     render(){
+        var producttitle = this.props.product.product
+        if(producttitle !== undefined){
+            console.log(this.props.product.product[0].id);
+        }
+
         var title = this.props.product.title;
-        console.log(title);
         if (title === undefined){
             title = []
         }

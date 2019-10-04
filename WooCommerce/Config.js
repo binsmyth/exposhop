@@ -2,11 +2,11 @@
 
 const Constants = {
     URL: {
-        root: 'http://192.168.1.54/wordpress/'
+        root: 'localhost/wordpress/'
     },
     Keys: {
-        ConsumerKey: 'ck_fdc2c8391e9b1aab375ac04404569b3c01eed609',
-	    ConsumerSecret: 'cs_91fd3a3545107baacd0ed624f2153b72ed9db6ec'
+        ConsumerKey: 'ck_1aba32214b9f41bf09f421d701ce25d409edf35d',
+	    ConsumerSecret: 'cs_16b7b82f0897f6a14a1d41a871867db5e0079760'
     }
 }
 
