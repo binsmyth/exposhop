@@ -14,23 +14,18 @@ class titleArrays extends Component {
         fetchProducts();
     }
     render(){
-        var producttitle = this.props.product.product
-        if(producttitle !== undefined){
-            console.log(this.props.product.product[0].id);
-        }
-
-        var title = this.props.product.title;
-        if (title === undefined){
-            title = []
+        let productItems = this.props.product.product
+        if(productItems === undefined){
+            productItems = [];
         }
 
         return (
             <TouchableOpacity>
-                {title.map((title,index)=>(
+                {productItems.map((productItems,index)=>(
                       <Button 
-                        key = { title } 
-                        title= { title }
-                        onPress= {()=>this.props.addProduct(title)} 
+                        key = { productItems.id } 
+                        title= { productItems.name }
+                        onPress= {()=>this.props.addProduct(productItems.id)} 
                         />  
                     ))}
             </TouchableOpacity>

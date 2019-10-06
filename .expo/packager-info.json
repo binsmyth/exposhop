@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 99579,
-  "expoServerNgrokUrl": "https://de-mue.binsmyth.exposhop.exp.direct",
-  "packagerNgrokUrl": "https://packager.de-mue.binsmyth.exposhop.exp.direct",
-  "ngrokPid": 99589
+  "packagerPid": 17227,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

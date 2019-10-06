@@ -1,26 +1,31 @@
 import { combineReducers } from 'redux';
 
 const INITIAL_STATE = {
-    title: [],
+    product: [],
     cartItem:[]
 };
 
 const productReducer = (state=INITIAL_STATE, action) => {
     if(action.type === 'ADD_PRODUCT') {
-        const { cartItem , title } = state;
-        var index = title.indexOf(action.payload);
-        var addedProduct = title.splice(index, 1);
-        cartItem.push(addedProduct);
-        const newState = {title, cartItem};
-        return newState;
-        // cartItem.push(title[action.payload]);
-        // console.log(title.splice(action.payload,1));
-        // console.log(state);
+        const {cartItem, product} = state;
+        let productIndex;
 
-        // const { cartItem , title } = state;
-        // const addedProduct = title.splice(action.payload,1);
-        // cartItem.push (addedProduct);
-        // const newState = { cartItem, addedProduct }
+        //find product location
+        product.forEach(function(value,index){
+            if(value.id === action.payload ){
+                productIndex = index;
+            }
+        });
+
+        let addedProduct = product.splice(productIndex,1)
+        cartItem.push(addedProduct);
+        const newState = {product, cartItem};
+        return newState;
+        // const { cartItem , name } = state;
+        // var index = title.indexOf(action.payload);
+        // var addedProduct = title.splice(index, 1);
+        // cartItem.push(addedProduct);
+        // const newState = {title, cartItem};
         // return newState;
     }
     else 

@@ -19,8 +19,15 @@ export function fetchProducts() {
             if(res.error) {
                 console.log(res.error);
             }
-            dispatch(fetchProductSuccess(res));
-            return res;
+            let productDetails = res.map(product =>({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    images: product.images[0].src
+                }
+            ));
+            dispatch(fetchProductSuccess(productDetails));
+            return productDetails;
         })
     }
 }
