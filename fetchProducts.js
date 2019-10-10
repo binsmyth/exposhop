@@ -1,6 +1,7 @@
 import { fetchProductSuccess } from './productActions';
 import WooCommerceRestApi from 'react-native-woocommerce-api';
 
+//Need to deal with sideffects add more actions
 export function fetchProducts() {
     let WooCommerceApi= new WooCommerceRestApi({
         url: 'http://192.168.1.144/wordpress', // Your store URL
@@ -19,6 +20,8 @@ export function fetchProducts() {
             if(res.error) {
                 console.log(res.error);
             }
+
+            //sort out from huge list of objects
             let productDetails = res.map(product =>({
                     id: product.id,
                     name: product.name,
@@ -26,6 +29,7 @@ export function fetchProducts() {
                     images: product.images[0].src
                 }
             ));
+            
             dispatch(fetchProductSuccess(productDetails));
             return productDetails;
         })
