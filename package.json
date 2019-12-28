@@ -22,6 +22,7 @@
     "react-native-web": "^0.11.4",
     "react-native-woocommerce-api": "^1.0.12",
     "react-navigation": "^4.0.0",
+    "react-navigation-drawer": "^2.3.3",
     "react-navigation-stack": "^1.5.1",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",

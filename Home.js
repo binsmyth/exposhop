@@ -6,11 +6,12 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text>Welcome to Market!</Text>
         {/*<Text> {this.props.products.addedProductItem.length} Products added</Text>*/}
-        <Button
+        {/*<Button
             title ="View Products"
             onPress ={() => this.props.navigation.navigate('ProductItems')}
-        />
+        />*/}
       </View>
     );
   }

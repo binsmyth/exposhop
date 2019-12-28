@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import { Alert, Text, View, TouchableOpacity, Image, Button } from 'react-native';
+import { Alert, Text, View, TouchableOpacity, Image, Button, ScrollView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addProduct } from './productActions';
 import { deleteProduct } from './productActions';
 import { fetchProducts } from './fetchProducts';
 
-class titleArrays extends Component {
+class ProductItems extends Component {
     constructor(props) {
         super(props);
     }
@@ -15,42 +15,60 @@ class titleArrays extends Component {
         fetchProducts();
     }
     renderProducts(productItems){
+        let productTotal = this.props.product.addedProducts.total || 0;
         return (
            <TouchableOpacity>
-               <Text>{this.props.product.addedProducts.total}</Text>
+               <Button  
+                        title= {'Total: ' + productTotal}
+                        onPress= {()=>this.props.navigation.navigate('Cart',{
+                            'item': this.props.product.addedProducts
+                        })}
+                        />
 
-                {productItems.map((productItems,index)=>
-                <React.Fragment key = { index }> 
+               <ScrollView style={styles.container}>
+
+                {productItems.map((productItems,index)=>{
+                let quantity = 0;
+                let subtotal = 0;
+
+                if(this.props.product.addedProducts.hasOwnProperty(productItems.name)){
+                    quantity = this.props.product.addedProducts[productItems.name].count;
+                    subtotal = this.props.product.addedProducts[productItems.name].count * this.props.product.addedProducts[productItems.name].price;
+                }
+                return(
+                <React.Fragment key = { index }>
+                    <View>
                     <Text>{productItems.name}</Text>
-                    <Text>{this.eachProductCount(productItems.name)}</Text>
-                    <Button 
-                        key = { productItems.name + " Add ".toString() } 
-                        title= '+'
-                        onPress= {()=>this.props.addProduct(productItems.id)} 
+                    <Image  style = {{width: 150, height: 150}} 
+                            source = {{uri: productItems.images}}/>
+                    <Text>Quantity: {quantity}</Text>
+                    <Text>Price: ${productItems.price}</Text>
+                    <Text>Subtotal: ${subtotal}</Text>
+                    <Button  
+                        title = '+'
+                        onPress = {()=>this.props.addProduct(productItems.id)} 
                         />
                     <Button 
-                        key = { productItems.name + " Delete ".toString() } 
-                        title= '-'
-                        onPress= {()=>this.props.deleteProduct(productItems.id)} 
+                        title = '-'
+                        onPress = {()=>this.props.deleteProduct(productItems.id)} 
                         />
-                </React.Fragment>)}
+                        </View>
+                </React.Fragment>)
+                })}
+            
+            </ScrollView>
             </TouchableOpacity>
             )
     }
-    eachProductCount(productItemName){
-        console.log(this.props.product.addedProducts,productItemName);
-        return 0
-    }
 
     render(){
-        if(!this.props.product.isFetch){
+        if(!this.props.product.isFetch || this.props.product === undefined){
             return <View><Text>Loading...</Text></View>
         }
         else{
             let productItems = this.props.product.product || [];
             return this.renderProducts(productItems)
         }
-        
     }
 }
 
@@ -67,4 +85,19 @@ const mapDispatchToProps = dispatch => (
     }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(titleArrays)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductItems)
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FF9900',
+    
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 8,
+    elevation: 5
+  },
+  section: {
+    color:'red'
+  }
+})

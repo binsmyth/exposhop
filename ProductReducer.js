@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import getProductCount from './getProductCount';
+import { getProductCount } from './getProductCount';
 
 const INITIAL_STATE = {
     product: [],
