@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Alert, Text, View, TouchableOpacity, Image, Button, ScrollView, StyleSheet } from 'react-native';
+import { Alert, Text, View, TouchableOpacity, Image, Button, ScrollView, StyleSheet, PixelRatio } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addProduct } from './productActions';
@@ -16,16 +16,18 @@ class ProductItems extends Component {
     }
     renderProducts(productItems){
         let productTotal = this.props.product.addedProducts.total || 0;
+        console.log(PixelRatio.getPixelSizeForLayoutSize(26.5));
         return (
-           <TouchableOpacity>
+           <TouchableOpacity style={styles.container}>
+               <View style={styles.top}>
                <Button  
                         title= {'Total: ' + productTotal}
                         onPress= {()=>this.props.navigation.navigate('Cart',{
                             'item': this.props.product.addedProducts
                         })}
                         />
-
-               <ScrollView style={styles.container}>
+                </View>
+               <ScrollView contentContainerStyle={styles.content}>
 
                 {productItems.map((productItems,index)=>{
                 let quantity = 0;
@@ -37,7 +39,7 @@ class ProductItems extends Component {
                 }
                 return(
                 <React.Fragment key = { index }>
-                    <View>
+                    <View style={styles.box}>
                     <Text>{productItems.name}</Text>
                     <Image  style = {{width: 150, height: 150}} 
                             source = {{uri: productItems.images}}/>
@@ -57,6 +59,9 @@ class ProductItems extends Component {
                 })}
             
             </ScrollView>
+            <View styles={styles.bottom}>
+
+            </View>
             </TouchableOpacity>
             )
     }
@@ -90,14 +95,34 @@ export default connect(mapStateToProps, mapDispatchToProps)(ProductItems)
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FF9900',
-    
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 8,
-    elevation: 5
+    margin:0,
+    padding:0,
+    fontFamily:'Arial'
   },
-  section: {
-    color:'red'
+  top:{
+        display:'flex',
+        flexWrap:'wrap',
+        width:'100%',
+        height:26.5,
+        margin:0,
+        position:'absolute',
+        zIndex:100,
+        backgroundColor:'#FF9900',
+        justifyContent:'space-between'
+  },
+  content:{
+      backgroundColor:'#111',
+      position:'relative',
+      marginTop:90
+  },
+  bottom:{
+      display:'flex',
+      flexWrap:'wrap',
+      width:'100%',
+      height:26.5,
+      position:'absolute',
+      bottom:0,
+      backgroundColor:'#FF9900',
+      justifyContent:'space-between'
   }
 })

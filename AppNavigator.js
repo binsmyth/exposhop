@@ -44,13 +44,17 @@ const ProductStack = createStackNavigator(
         ProductItems: { screen : ProductItemStack },
         Cart:{ screen: CartStack },
         // Drawer:{ screen: Drawer } Work on future
+    },
+    {
+        headerMode:'none'
     }
 );
 
 const HomeStack = createStackNavigator({
     Home: { screen: Home },
     //MainStack:{screen: MainStack},
-});
+}
+);
 
 const  Drawer = createDrawerNavigator({
     Home:{ screen : HomeStack },
