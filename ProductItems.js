@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import { Alert, Text, View, TouchableOpacity, Image, Button, ScrollView, StyleSheet, PixelRatio } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import { Alert, FlatList,Text, View, TouchableOpacity, Button, Image, ScrollView, StyleSheet, PixelRatio } from 'react-native';
+import { Badge, ThemeProvider, Header } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addProduct } from './productActions';
@@ -14,53 +16,65 @@ class ProductItems extends Component {
         const { fetchProducts } = this.props;
         fetchProducts();
     }
+    renderCenterComponent(productTotal){
+        return (
+            <Badge 
+                fontSize='20'
+                value= {productTotal}
+                onPress= {()=>this.props.navigation.navigate('Cart',{
+                    'item': this.props.product.addedProducts
+                })}
+            />
+        )
+    }
     renderProducts(productItems){
         let productTotal = this.props.product.addedProducts.total || 0;
-        console.log(PixelRatio.getPixelSizeForLayoutSize(26.5));
         return (
            <TouchableOpacity style={styles.container}>
-               <View style={styles.top}>
-               <Button  
-                        title= {'Total: ' + productTotal}
-                        onPress= {()=>this.props.navigation.navigate('Cart',{
-                            'item': this.props.product.addedProducts
+               <Header 
+                leftComponent={{ icon:'menu', color:'#fff' }}
+                centerComponent={{ icon:'home', color:'#fff' }}
+                rightComponent={ this.renderCenterComponent(productTotal) }
+               />
+
+                <View>
+                    <ScrollView style={{height:'73.9%'}} contentContainerStyle={styles.content}>
+                        {productItems.map((productItems,index)=>{
+                            let quantity = 0;
+                            let subtotal = 0;
+
+                            if(this.props.product.addedProducts.hasOwnProperty(productItems.name)){
+                                quantity = this.props.product.addedProducts[productItems.name].count;
+                                subtotal = this.props.product.addedProducts[productItems.name].count * this.props.product.addedProducts[productItems.name].price;
+                        }
+                        return(
+                        <React.Fragment key = { index }>
+                            <View style={styles.box}>
+                            <Text style={styles.text}>{productItems.name}</Text>
+                            <Image  style = {{width: 150, height: 150}} 
+                                    source = {{uri: productItems.images}}/>
+                            <Text style={styles.text}>Quantity: {quantity}</Text>
+                            <Text style={styles.text}>Price: ${productItems.price}</Text>
+                            <Text style={styles.text}>Subtotal: ${subtotal}</Text>
+                            <Button  
+                                title = '+'
+                                onPress = {()=>this.props.addProduct(productItems.id)} 
+                                />
+                            <Button 
+                                title = '-'
+                                onPress = {()=>this.props.deleteProduct(productItems.id)} 
+                                />
+                                </View>
+                        </React.Fragment>)
                         })}
-                        />
-                </View>
-               <ScrollView contentContainerStyle={styles.content}>
-
-                {productItems.map((productItems,index)=>{
-                let quantity = 0;
-                let subtotal = 0;
-
-                if(this.props.product.addedProducts.hasOwnProperty(productItems.name)){
-                    quantity = this.props.product.addedProducts[productItems.name].count;
-                    subtotal = this.props.product.addedProducts[productItems.name].count * this.props.product.addedProducts[productItems.name].price;
-                }
-                return(
-                <React.Fragment key = { index }>
-                    <View style={styles.box}>
-                    <Text>{productItems.name}</Text>
-                    <Image  style = {{width: 150, height: 150}} 
-                            source = {{uri: productItems.images}}/>
-                    <Text>Quantity: {quantity}</Text>
-                    <Text>Price: ${productItems.price}</Text>
-                    <Text>Subtotal: ${subtotal}</Text>
-                    <Button  
-                        title = '+'
-                        onPress = {()=>this.props.addProduct(productItems.id)} 
-                        />
-                    <Button 
-                        title = '-'
-                        onPress = {()=>this.props.deleteProduct(productItems.id)} 
-                        />
-                        </View>
-                </React.Fragment>)
-                })}
-            
-            </ScrollView>
-            <View styles={styles.bottom}>
-
+                    </ScrollView>
+                    <View style={{height:'26.1%'}}>
+                    <Header
+                        leftComponent={{ icon:'menu', color:'#fff' }}
+                        centerComponent={ this.renderCenterComponent(productTotal) }
+                        rightComponent={{ icon:'home', color:'#fff' }}  
+                    />
+                    </View>
             </View>
             </TouchableOpacity>
             )
@@ -97,32 +111,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF9900',
     margin:0,
     padding:0,
-    fontFamily:'Arial'
+    fontFamily:'Arial',
   },
   top:{
-        display:'flex',
-        flexWrap:'wrap',
-        width:'100%',
-        height:26.5,
-        margin:0,
-        position:'absolute',
-        zIndex:100,
-        backgroundColor:'#FF9900',
-        justifyContent:'space-between'
+    display:'flex',
+    flexWrap:'wrap',
+    width:'100%',
+    margin:0,
+    position:'absolute',
+    zIndex:100,
+    backgroundColor:'#FF9900',
+    justifyContent:'space-between'
   },
   content:{
-      backgroundColor:'#111',
-      position:'relative',
-      marginTop:90
+    backgroundColor:'#111',
+    position:'relative',
   },
   bottom:{
-      display:'flex',
-      flexWrap:'wrap',
       width:'100%',
-      height:26.5,
       position:'absolute',
       bottom:0,
       backgroundColor:'#FF9900',
       justifyContent:'space-between'
+  },
+  text:{
+      color:'white'
   }
+
 })

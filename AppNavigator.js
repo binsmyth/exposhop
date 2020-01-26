@@ -7,6 +7,7 @@ import Cart from './Cart';
 import { StyleSheet } from 'react-native';
 import React from 'react';
 import Icon from '@expo/vector-icons/Ionicons';
+import New from './New';
 
 const CartStack = createStackNavigator(
     {
@@ -56,9 +57,14 @@ const HomeStack = createStackNavigator({
 }
 );
 
+const NewStack = createStackNavigator({
+    New: { screen : New },
+});
+
 const  Drawer = createDrawerNavigator({
     Home:{ screen : HomeStack },
-    Products:{ screen: ProductStack}
+    Products:{ screen: ProductStack},
+    New:{ screen: NewStack },
 });
 
 const AppNavigator = createAppContainer(Drawer);

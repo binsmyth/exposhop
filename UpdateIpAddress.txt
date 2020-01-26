@@ -1,7 +1,7 @@
-UPDATE `wp_2_options` SET `option_value` = 'http://192.168.1.54/wordpress/practicekathman' WHERE `wp_2_options`.`option_id` = 1;
-UPDATE `wp_2_options` SET `option_value` = 'http://http://192.168.1.54/wordpress/practicekathman' WHERE `wp_2_options`.`option_id` = 2;
-UPDATE `wp_options` SET `option_value` = 'http://192.168.1.54/wordpress' WHERE `wp_options`.`option_id` = 1;
-UPDATE `wp_options` SET `option_value` = 'http://192.168.1.54/wordpress' WHERE `wp_options`.`option_id` = 2;
-UPDATE `wp_site` SET `domain` = '192.168.1.54' WHERE `wp_site`.`id` = 1;
-UPDATE `wp_blogs` SET `domain` = '192.168.1.54' WHERE `wp_blogs`.`blog_id` = 1;
-UPDATE `wp_blogs` SET `domain` = '192.168.1.54' WHERE `wp_blogs`.`blog_id` = 2;
+UPDATE `wp_2_options` SET `option_value` = '192.168.1.52/wordpress/practicekathman' WHERE `wp_2_options`.`option_id` = 1;
+UPDATE `wp_2_options` SET `option_value` = '192.168.1.52/wordpress/practicekathman' WHERE `wp_2_options`.`option_id` = 2;
+UPDATE `wp_options` SET `option_value` = '192.168.1.52/wordpress' WHERE `wp_options`.`option_id` = 1;
+UPDATE `wp_options` SET `option_value` = '192.168.1.52/wordpress' WHERE `wp_options`.`option_id` = 2;
+UPDATE `wp_site` SET `domain` = '192.168.1.52' WHERE `wp_site`.`id` = 1;
+UPDATE `wp_blogs` SET `domain` = '192.168.1.52192.168.1.52' WHERE `wp_blogs`.`blog_id` = 1;
+UPDATE `wp_blogs` SET `domain` = '192.168.1.52' WHERE `wp_blogs`.`blog_id` = 2;
