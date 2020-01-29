@@ -46,7 +46,7 @@ class ProductItems extends Component {
                             if(this.props.product.addedProducts.hasOwnProperty(productItems.name)){
                                 quantity = this.props.product.addedProducts[productItems.name].count;
                                 subtotal = this.props.product.addedProducts[productItems.name].count * this.props.product.addedProducts[productItems.name].price;
-                        }
+                            }
                         return(
                         <React.Fragment key = { index }>
                             <View style={styles.box}>
