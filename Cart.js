@@ -6,7 +6,7 @@ import { colors, fonts, padding, dimensions } from './styles/base.js';
 
 class Cart extends Component {
   render() {
-    let addedItems = Object.entries(omit(this.props.navigation.getParam('item'),"total"));
+    let addedItems = Object.entries(omit(this.props.product.addedProducts,"total"))||[];
     let Total = 0;
     return (
       <View style={ styles.container }>
@@ -14,7 +14,7 @@ class Cart extends Component {
           Total = Total + (value[1].count * value[1].price);
           return(
             <View key = { index } >
-                <Text style = {{color: 'red'}}>Product: {value[0]}</Text>
+                <Text style = {{ color: 'red' }}>Product: { value[0] }</Text>
                 <Text>Quantity: {value[1].count}</Text>
                 <Text>Price: {value[1].price}</Text>
                 <Text>Subtotal:{value[1].count * value[1].price}</Text>
@@ -28,8 +28,8 @@ class Cart extends Component {
 }
 
 const mapStateToProps=(state) => {
-    const { products } = state
-    return { products }
+    const { product } = state
+    return { product }
 };
 
 export default connect(mapStateToProps)(Cart)
