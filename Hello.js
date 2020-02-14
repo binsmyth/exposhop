@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
-export default class Home extends Component {
+export default class Hello extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -36,4 +36,4 @@ const mapStateToProps=(state) => {
     return { products }
 };
 
-connect(mapStateToProps)(Home)
+connect(mapStateToProps)(Hello)

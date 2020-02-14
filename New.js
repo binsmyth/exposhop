@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { Alert, FlatList,Text, View, TouchableOpacity, Button, Image, ScrollView, StyleSheet, PixelRatio } from 'react-native';
-import { Badge, ThemeProvider, Header } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addProduct } from './productActions';

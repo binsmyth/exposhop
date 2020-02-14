@@ -13,6 +13,9 @@ const { height } = Dimensions.get('window');
 class ProductItems extends Component {
   constructor(props){
     super(props)
+    this.state={
+      arrowFacing :'ios-arrow-up'
+    }
   }
   componentWillMount(){
     const { fetchProducts } = this.props;
@@ -91,6 +94,20 @@ class ProductItems extends Component {
       </ScrollView>
     )
   }
+
+  changeCartArrowFacing(value){
+    if(value === 52.57142857142857){
+      this.setState((state)=>{
+        return {arrowFacing:'ios-arrow-up'}
+      })
+    }
+    else{
+      this.setState((state)=>{
+        return {arrowFacing:'ios-arrow-down'}
+      })
+    }
+  }
+
   render() {
     if(!this.props.product.isFetch || this.props.product === undefined){
       return <View><Text>Loading.....</Text></View>
@@ -136,12 +153,13 @@ class ProductItems extends Component {
                                     draggableRange={{top:height/1.1, bottom: height/14 }}
                                     animatedValue={this._draggedValue}
                                     showBackdrop={false}
-                                    
+                                    onMomentumDragEnd={(value)=>this.changeCartArrowFacing(value)}
+                                    onDragEnd={(value)=>this.changeCartArrowFacing(value)}
                       >
                 <View style={styles.panel}>
                   <View style={styles.panelHeader}>
-                    <Icon name="ios-arrow-up" />
-                    <Text>Product Cart</Text>
+                    <Icon style={{color:'#fff'}} name={this.state.arrowFacing}/>
+                    <Text style={{color:'#fff'}}>Product Cart</Text>
                   </View>
                   <View style={styles.footercontainer}>
                     <Cart item={this.props.product.addedProducts}/>
@@ -151,34 +169,6 @@ class ProductItems extends Component {
             </Body>
           </FooterTab>
         </Footer>
-          {/* <Footer>
-            <FooterTab>
-            <Body>
-              
-            </Body>
-              <Left>
-                <Button transparent>
-                  <Icon style={{color:'#fff'}} name="menu" />
-                </Button>
-              </Left>
-              <Body>
-                <Icon style={{color:'#fff', marginTop:-10}}name="ios-arrow-up" />
-              </Body>
-              <Right>
-                <Button transparent>
-                <Icon style={{color:'#fff'}} name="ios-cart" onPress={()=>this._panel.show()}/>
-                </Button>
-                <Button transparent>
-                  <Icon onPress= {()=>this.props.navigation.navigate('Bottom',{
-                      'item': this.props.product.addedProducts
-                  })} style={{color:'#fff'}} name='ios-cart' />
-                </Button>
-              </Right>
-
-            </FooterTab>
-          </Footer> 
-          </SlidingUpPanel>
-          */}
       </Container>
     );
   }
@@ -190,21 +180,10 @@ const styles = StyleSheet.create({
     flexDirection:"column",
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
   footercontainer:{
     flex:1,
     backgroundColor:'#ff9900',
-    alignItems:'center',
-    justifyContent:'center'
+    margin:30
   },
   panel:{
     flex:1,
