@@ -17,7 +17,7 @@ class ProductItems extends Component {
       arrowFacing :'ios-arrow-up'
     }
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     const { fetchProducts } = this.props;
     fetchProducts(); 
   }
