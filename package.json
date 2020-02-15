@@ -47,5 +47,6 @@
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|rn-sliding-up-panel|react-redux|redux|redux-persist|react-navigation|react-navigation-stack|react-navigation-drawer)"
     ]
   },
-  "private": true
+  "private": true,
+  "version": "0.0.0"
 }
