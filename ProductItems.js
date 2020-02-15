@@ -16,11 +16,13 @@ class ProductItems extends Component {
     this.state={
       arrowFacing :'ios-arrow-up'
     }
-  }
-  UNSAFE_componentWillMount(){
     const { fetchProducts } = this.props;
     fetchProducts(); 
   }
+  // UNSAFE_componentWillMount(){
+  //   const { fetchProducts } = this.props;
+  //   fetchProducts(); 
+  // }
   putProductsInRows(productItems){
     return productItems.reduce((result, value, index, array)=>{
       if(index%2 === 0 ){
