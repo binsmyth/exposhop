@@ -114,7 +114,6 @@ class ProductItems extends Component {
     if(!this.props.product.isFetch || this.props.product === undefined){
       return <View><Text>Loading.....</Text></View>
     }
-
     let productItems = this.props.product.product || [];
     let sortedProductItems = this.putProductsInRows(productItems);
     return (
@@ -164,7 +163,7 @@ class ProductItems extends Component {
                     <Text style={{color:'#fff'}}>Product Cart</Text>
                   </View>
                   <View style={styles.footercontainer}>
-                    <Cart item={this.props.product.addedProducts}/>
+                    <Cart />
                   </View>
                 </View>
               </SlidingUpPanel>

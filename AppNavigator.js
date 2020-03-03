@@ -63,8 +63,8 @@ const HomeStack = createStackNavigator({
 );
 
 const  Drawer = createDrawerNavigator({
-    Products:{ screen: ProductStack},
     Home:{ screen : HomeStack },
+    Products:{ screen: ProductStack},
 });
 
 const AppNavigator = createAppContainer(Drawer);

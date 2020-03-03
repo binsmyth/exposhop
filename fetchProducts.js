@@ -4,10 +4,10 @@ import WooCommerceRestApi from 'react-native-woocommerce-api';
 //Need to deal with sideffects add more actions
 export function fetchProducts() {
     let WooCommerceApi= new WooCommerceRestApi({
-        url: 'http://localhost/mysite', // Your store URL
+        url: 'http://localhost:8000/', // Your store URL
         ssl: true,
-        consumerKey: 'ck_9e443b2e33c95f8e9e7e99568dd390cf9c0388ae', // Your consumer secret
-        consumerSecret: 'cs_dd76d7c01101bc7a2747d32c2e88d9e99a5b7de0', // Your consumer secret
+        consumerKey: 'ck_1c80ef55d7b00f0b9683ece8fa8b7321a1b5d27c', // Your consumer secret
+        consumerSecret: 'cs_f7e5bb46843663ec2276bfcf2b20b0809b772158', // Your consumer secret
         wpAPI: true, // Enable the WP REST API integration
         version: 'wc/v2', // WooCommerce WP REST API version
         queryStringAuth: true

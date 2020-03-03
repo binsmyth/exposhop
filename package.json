@@ -14,11 +14,14 @@
     "native-base": "^2.13.8",
     "oauth-1.0a": "2.2.5",
     "react": "16.9.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.12.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.1.tar.gz",
     "react-native-gesture-handler": "~1.5.0",
     "react-native-reanimated": "~1.4.0",
     "react-native-safe-area-context": "0.6.0",
     "react-native-screens": "2.0.0-alpha.12",
+    "react-native-unimodules": "^0.7.0",
     "react-native-woocommerce-api": "^1.0.12",
     "react-navigation": "^4.0.0",
     "react-navigation-drawer": "^2.3.4",
@@ -33,19 +36,33 @@
     "babel-jest": "24.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.3.0",
     "jest": "24.1.0",
     "jest-expo": "^36.0.0",
+    "jest-serializer-enzyme": "^1.0.0",
     "metro-react-native-babel-preset": "0.54.0",
     "react-test-renderer": "16.6.3",
     "redux-mock-store": "^1.5.4"
   },
   "jest": {
     "preset": "jest-expo",
+    "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/mocks/fileMock.js"
+    },
     "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|rn-sliding-up-panel|react-redux|redux|redux-persist|react-navigation|react-navigation-stack|react-navigation-drawer)"
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|rn-sliding-up-panel|react-redux|redux|redux-persist|react-navigation|react-navigation-stack|react-navigation-drawer|@expo/vector-icons/build)"
+    ],
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js",
+      "./jestSetup.js"
+    ],
+    "verbose": true,
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   },
   "private": true,
