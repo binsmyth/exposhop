@@ -16,15 +16,16 @@ The environment that I am writing this project is-
 For local dev environment I have been using-
 1. Docker installed
 2. Docker wordpress environment
-4. Woocommerce for wordpress with API enabled.
+4. Woocommerce installed with API enabled.
 5. Dummy product datas into Woocommerce.
 
 # Getting Started
 To get started with this project-
 1. git clone https://github.com/binsmyth/exposhop.git
-2. yarn install
-3. start ios simulator(only ios available, android emulator still in progress)
-4. expo start
+2. use the docker-compose.yaml to create a container
+3. yarn install
+4. start ios simulator(only ios available, android emulator still in progress)
+5. expo start
 
 # Running Tests
 1. yarn test
