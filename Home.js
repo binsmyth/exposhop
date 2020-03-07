@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
 
 export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Button onPress={()=>this.props.navigation.openDrawer()} title="Open Drawer"/>
         <Text>Welcome to Market!</Text>
       </View>
     );
