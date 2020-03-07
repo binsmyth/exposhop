@@ -12,6 +12,10 @@
       "ios",
       "android",
       "web"
-    ]
+    ],
+    "android":{
+      "package":"com.binsmyth.exposhop",
+      "versionCode":1
+    }
   }
 }
