@@ -3,23 +3,9 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import  Home from './Home';
 import ProductItems from './ProductItems';
-import Cart from './Cart';
 import { StyleSheet } from 'react-native';
 import React from 'react';
 import Icon from '@expo/vector-icons/Ionicons';
-import BottomSheet from './BottomSheet';
-
-const CartStack = createStackNavigator(
-    {
-        CartStack:{ screen : Cart },
-    },
-    {
-        navigationOptions: ()=>({
-            title: `Cart`,
-            headerTitle:`Cart`
-        })
-    }
-);
 
 const ProductItemStack = createStackNavigator(
     {
@@ -40,16 +26,9 @@ const ProductItemStack = createStackNavigator(
     }
 );
 
-const BottomSheetStack = createStackNavigator({
-    BottomSheet: { screen: BottomSheet },
-});
-
 const ProductStack = createStackNavigator(
     {
         ProductItems: { screen : ProductItemStack },
-        Cart:{ screen: CartStack },
-        Bottom:{ screen: BottomSheetStack},
-        // Drawer:{ screen: Drawer } Work on future
     },
     {
         headerMode:'none'

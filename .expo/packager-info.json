@@ -1,10 +1,10 @@
 {
-  "devToolsPort": 19003,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 86521,
-  "expoServerNgrokUrl": "https://mz-fr3.binsmyth.exposhop.exp.direct",
-  "packagerNgrokUrl": "https://packager.mz-fr3.binsmyth.exposhop.exp.direct",
-  "ngrokPid": 86537,
+  "devToolsPort": 19002,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": null
 }

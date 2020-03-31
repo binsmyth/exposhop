@@ -10,7 +10,7 @@ import Cart from './Cart';
 
 const { height } = Dimensions.get('window');
 
-class ProductItems extends Component {
+export class ProductItems extends Component {
   constructor(props){
     super(props)
     this.state={
@@ -19,10 +19,7 @@ class ProductItems extends Component {
     const { fetchProducts } = this.props;
     fetchProducts(); 
   }
-  // UNSAFE_componentWillMount(){
-  //   const { fetchProducts } = this.props;
-  //   fetchProducts(); 
-  // }
+
   putProductsInRows(productItems){
     return productItems.reduce((result, value, index, array)=>{
       if(index%2 === 0 ){
@@ -33,7 +30,6 @@ class ProductItems extends Component {
   }
 
   renderProducts(sortedProductItems){
-
     let productItemComponent = (productItems)=>{
       return(
         <View style={{ width:'100%', flex: 2, flexDirection:'row', flexWrap:'wrap' }}>
