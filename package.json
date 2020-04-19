@@ -67,7 +67,7 @@
     ],
     "verbose": true,
     "snapshotSerializers": [
-      "enzyme-to-json/serializer"
+      "react-native-jest-serializer"
     ]
   },
   "private": true,

@@ -73,19 +73,34 @@ it('render',()=>{
   });
   let fetchProducts = jest.fn();
   const productProps = {
-    fetchProducts:fetchProducts,
-    product:{
-      isFetch:true
+      fetchProducts:fetchProducts,
+      product:{
+        "addedProducts":{},
+        "isFetch":true,
+        "product":[
+          {
+            "id":34,
+            "images": "http://localhost:8000/wp-content/uploads/2020/02/pennant-1.jpg",
+            "name": "WordPress Pennant",
+            "price": "11.05", 
+          },
+          {
+            "id":35,
+            "images": "http://localhost:8000/wp-content/uploads/2020/02/pennant-1.jpg",
+            "name": "WordPress Pennant",
+            "price": "11.05", 
+          },
+        ]
+      },
     }
-  }
   const wrapper = shallow(<ProductItems {...productProps}/>);
-  console.log(wrapper.instance().putProductsInRows())
+  console.log(wrapper.instance().putProductsInRows([productProps.product]))
 });
 
 //App component render test
-// test('render App correctly', ()=>{
-//   checkRenderedComponent(<App />);
-// });
+test('render App correctly', ()=>{
+  checkRenderedComponent(<App />);
+});
 
 //Cart component render test
 // //Solved using this url: https://www.robinwieruch.de/react-connected-component-test
