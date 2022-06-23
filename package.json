@@ -45,7 +45,7 @@
     "jest": "24.1.0",
     "jest-expo": "^36.0.0",
     "jest-serializer-enzyme": "^1.0.0",
-    "jsdom": "^16.2.1",
+    "jsdom": "^16.5.0",
     "metro-react-native-babel-preset": "0.54.0",
     "prettier-inspect": "^1.0.0",
     "react-native-mock-render": "^0.1.8",
